@@ -23,22 +23,16 @@ module WeatherNewsChecker
       end
 
       def parse_day_weather(day)
-        start_hour = day.attr("startHour").text.to_i
-        weather_array = day.css("weather > hour")
-        temperature_array = day.css("temperature > hour")
-        wind_array = day.css("wind > hour")
-        precipitation_array = day.css("precipitation > hour")
-
         result = []
 
-        weather_array.map(&:text).each_with_index do |weather_value, i|
+        day.weather.each_with_index do |weather_value, i|
           result << {
-                     hour: (start_hour + i) % 24,
-                     weather: weather_of(weather_value.to_i / 100),
-                     temperature: temperature_array[i].text.to_i,
-                     wind_direction: direction_of(wind_array[i].css("direction").text.to_i),
-                     wind_value: wind_array[i].css("value").text.to_i,
-                     precipitation: precipitation_array[i].text.to_i
+                     hour: (day.start_hour + i) % 24,
+                     weather: weather_of(weather_value / 100),
+                     temperature: day.temperature[i],
+                     wind_direction: direction_of(day.wind_direction[i]),
+                     wind_value: day.wind_value[i],
+                     precipitation: day.precipitation[i]
                     }
         end
 
@@ -51,8 +45,10 @@ module WeatherNewsChecker
 
       def parse_weather_xml_at(observatory_id)
         doc = Nokogiri::XML.parse(open(weather_xml_url(observatory_id)))
+        day = Day.new(doc.xpath("/weathernews/data/day"))
+
         {
-          day: parse_day_weather(doc.xpath("/weathernews/data/day")),
+          day: parse_day_weather(day),
         }
       end
 
