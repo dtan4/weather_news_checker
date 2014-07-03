@@ -1,4 +1,7 @@
 # WeatherNewsChecker
+[![Build Status](https://travis-ci.org/dtan4/weather_news_checker.svg?branch=master)](https://travis-ci.org/dtan4/weather_news_checker)
+[![Coverage Status](https://img.shields.io/coveralls/dtan4/weather_news_checker.svg)](https://coveralls.io/r/dtan4/weather_news_checker)
+[![Code Climate](https://codeclimate.com/github/dtan4/weather_news_checker.png)](https://codeclimate.com/github/dtan4/weather_news_checker)
 
 TODO: Write a gem description
 
