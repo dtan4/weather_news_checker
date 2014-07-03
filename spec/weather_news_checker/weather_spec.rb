@@ -28,7 +28,7 @@ module WeatherNewsChecker
         end
       end
 
-      context "when invalid postal code is given" do
+      pending "when invalid postal code is given" do
         let(:postal_code) do
           "invalid"
         end
