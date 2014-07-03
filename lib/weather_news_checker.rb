@@ -1,3 +1,4 @@
+require "weather_news_checker/weather"
 require "weather_news_checker/version"
 
 module WeatherNewsChecker
