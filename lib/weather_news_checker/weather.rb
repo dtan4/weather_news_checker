@@ -36,6 +36,8 @@ module WeatherNewsChecker
                     }
         end
 
+        binding.pry
+
         result
       end
 
@@ -53,7 +55,7 @@ module WeatherNewsChecker
       end
 
       def direction_of(index)
-        %i(n ne e se s sw w nw)[index / 2]
+        %i(ne e se s sw w nw n)[index / 2 - 1]
       end
 
       def weather_of(index)
