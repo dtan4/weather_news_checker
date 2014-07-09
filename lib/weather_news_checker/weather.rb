@@ -36,8 +36,6 @@ module WeatherNewsChecker
                     }
         end
 
-        binding.pry
-
         result
       end
 
